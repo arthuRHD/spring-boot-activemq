@@ -6,13 +6,13 @@ You need Docker with the compose plugin.
 
 ## Usage
 
-Launch the ActiveMQ container
+Launch the ActiveMQ and the spring boot app with docker
 
 ```shell
-docker compose up -d 
+docker compose up --build -d
 ```
 
-Launch the spring boot application
+Launch the spring boot application locally
 
 ```shell
 ./gradlew bootRun

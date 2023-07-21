@@ -3,6 +3,7 @@ spring:
     queueName: "messageQueue"
     user: "admin"
     password: "admin"
+    broker-url: "tcp://activemq:61616"
   jms:
     cache:
       session-cache-size: 5
