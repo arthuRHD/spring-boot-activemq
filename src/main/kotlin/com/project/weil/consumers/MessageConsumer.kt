@@ -4,7 +4,7 @@ import org.springframework.jms.annotation.JmsListener
 import org.springframework.stereotype.Component
 
 @Component
-class MessageConsumer {
+class MessageConsumer() {
 
     @JmsListener(destination = "\${spring.activemq.queue-name}")
     fun processMessage(content: String?) {

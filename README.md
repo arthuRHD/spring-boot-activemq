@@ -21,8 +21,9 @@ sequenceDiagram
     Backend->>+ActiveMQ: Subscribe to 'messageQueue'
     Backend->>+ActiveMQ: Publish 'hi everyone !' to 'messageQueue'
     ActiveMQ->>+ActiveMQ: Put the message and make it available to consumers
-    ActiveMQ->>+Backend: Broadcast the availability to the consumer 
-    Backend->>+ActiveMQ: Listen to the message
+    ActiveMQ->>+Backend: Broadcast the availability to consumers 
+    Backend->>+ActiveMQ: Consume the message
+    Backend->>+Backend: Delete the message to remove availability
     Backend->>+Backend: Print the message in the standard output
 ```
 
@@ -31,3 +32,6 @@ You can display the standard output of the backend with
 ```shell
 docker logs spring-app-1 -f
 ```
+
+In this application, I've used the default configuration for the JMS Listener. In production, we should
+tune the timeouts and most of all, the consumption acknowledgment mode (CLIENT or AUTO) of the session.
