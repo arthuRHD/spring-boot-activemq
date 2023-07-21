@@ -14,4 +14,9 @@ class WeilControllerAdvice {
     @ExceptionHandler(JmsException::class)
     @ResponseStatus(HttpStatus.CONFLICT)
     fun handleJmsException(ex: JmsException, request: WebRequest): ErrorMessage = ErrorMessage(ex)
+
+    @ExceptionHandler(RuntimeException::class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    fun handleRuntimeException(ex: RuntimeException, request: WebRequest): ErrorMessage = ErrorMessage(ex)
+
 }

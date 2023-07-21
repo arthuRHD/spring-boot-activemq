@@ -1,6 +1,6 @@
 spring:
   activemq:
-    queueName: "messageQueue"
+    queue-name: "messageQueue"
     user: "admin"
     password: "admin"
     broker-url: "tcp://activemq:61616"

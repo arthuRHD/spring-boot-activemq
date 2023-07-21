@@ -11,14 +11,17 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("message")
 class MessageController(
         private val jmsTemplate: JmsTemplate,
-        @Value("\${spring.activemq.queueName}") private val queueName: String
+        @Value("\${spring.activemq.queue-name}") private val queueName: String
 ) {
 
     @GetMapping("/sendHello")
-    fun sendHello() = jmsTemplate.send(queueName) { messageCreator ->
-        val message: TextMessage = messageCreator.createTextMessage()
-        message.text = "Hi everyone !"
-        message
+    fun sendHello(): String {
+        jmsTemplate.send(queueName) { messageCreator ->
+            val message: TextMessage = messageCreator.createTextMessage()
+            message.text = "Hi everyone !"
+            message
+        }
+        return "Sent to the queue."
     }
 
 }
