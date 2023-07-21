@@ -1,0 +1,8 @@
+spring:
+  activemq:
+    queueName: "messageQueue"
+    user: "admin"
+    password: "admin"
+  jms:
+    cache:
+      session-cache-size: 5
